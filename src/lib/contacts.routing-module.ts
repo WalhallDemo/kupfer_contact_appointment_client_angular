@@ -8,4 +8,4 @@ const contactsRoutes: Routes = [
   }
 ];
 
-export const ContactsRoutingModule = RouterModule.forRoot(contactsRoutes);
+export const ContactsRoutingModule = RouterModule.forChild(contactsRoutes);
