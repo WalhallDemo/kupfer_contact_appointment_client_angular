@@ -1,4 +1,4 @@
-import { HttpService } from '@libs/midgard-angular/src/lib/modules/http-module/http.service';
+import { HttpService } from '@libs/midgard-angular/src/lib/modules/http/http.service';
 import { combineEpics, ofType } from 'redux-observable';
 import { switchMap } from 'rxjs/operators';
 import { catchError, map } from 'rxjs/internal/operators';
