@@ -1,7 +1,6 @@
 import { HttpService } from '@libs/midgard-angular/src/lib/modules/http/http.service';
-import { combineEpics, ofType } from 'redux-observable';
-import { switchMap } from 'rxjs/operators';
-import { catchError, map } from 'rxjs/internal/operators';
+import { ofType } from 'redux-observable';
+import { switchMap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LOAD_DATA_CONTACTS, loadContactsDataCommit, loadContactsDataFail } from '@libs/contacts/src/lib/state/contacts.actions';
 
@@ -26,4 +25,4 @@ const loadContactDataEpic = action$ => {
 };
 
 // combine the modules epics into one
-export const contactsEpics  = combineEpics(loadContactDataEpic);
+export const contactsEpics  = loadContactDataEpic;
