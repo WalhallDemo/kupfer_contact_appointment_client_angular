@@ -1,20 +1,30 @@
-import { MidgardState } from '@libs/midgard-angular/src/lib/state/midgard.model';
-import { LOAD_DATA_CONTACTS_COMMIT } from '@libs/contacts/src/lib/state/contacts.actions';
 
-const initialState: MidgardState = {
-  workflowLevel1: [],
-  workflowLevel2: [],
-  dataLoaded: false
+import { addAll, deleteOne, upsertOne } from '@libs/midgard-angular/src/lib/state/reducer.utils';
+import {
+  CREATE_CONTACT_COMMIT, DELETE_CONTACT_COMMIT, LOAD_ALL_CONTACTS_COMMIT, LOAD_ONE_CONTACT_COMMIT,
+  UPDATE_CONTACT_COMMIT
+} from './contacts.actions';
+
+const initialState: any = {
+  data: [],
+  loaded: false,
+  created: false,
+  updated: false,
+  deleted: false
 };
 
 export function contactsReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_DATA_CONTACTS_COMMIT:
-      return Object.assign({}, state, {
-        workflowLevel1: action.data,
-        dataLoaded: true
-      });
-
+    case LOAD_ALL_CONTACTS_COMMIT:
+      return addAll(state, action);
+    case LOAD_ONE_CONTACT_COMMIT:
+      return upsertOne(state, action);
+    case CREATE_CONTACT_COMMIT:
+      return upsertOne(state, action);
+    case UPDATE_CONTACT_COMMIT:
+      return upsertOne(state, action);
+    case DELETE_CONTACT_COMMIT:
+      return deleteOne(state, action);
     default:
       return state;
   }

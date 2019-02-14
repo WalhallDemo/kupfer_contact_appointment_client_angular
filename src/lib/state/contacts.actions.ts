@@ -1,23 +1,132 @@
-export const LOAD_DATA_CONTACTS = 'LOAD_DATA_CONTACTS';
-export const LOAD_DATA_CONTACTS_COMMIT = 'LOAD_DATA_CONTACTS_COMMIT';
-export const LOAD_DATA_CONTACTS_FAIL = 'LOAD_DATA_CONTACTS_FAIL';
+// Load All
+export const LOAD_ALL_CONTACTS = 'LOAD_ALL_CONTACTS';
+export const LOAD_ALL_CONTACTS_COMMIT = 'LOAD_ALL_CONTACTS_COMMIT';
+export const LOAD_ALL_CONTACTS_FAIL = 'LOAD_ALL_CONTACTS_FAIL';
 
-export function loadContactsData() {
+// Load One
+export const LOAD_ONE_CONTACT = 'LOAD_ONE_CONTACT';
+export const LOAD_ONE_CONTACT_COMMIT = 'LOAD_ONE_CONTACT_COMMIT';
+export const LOAD_ONE_CONTACT_FAIL = 'LOAD_ONE_CONTACT_FAIL';
+
+// Create
+export const CREATE_CONTACT = 'CREATE_CONTACT';
+export const CREATE_CONTACT_COMMIT = 'CREATE_CONTACT_COMMIT';
+export const CREATE_CONTACT_FAIL = 'CREATE_CONTACT_FAIL';
+
+// Update
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
+export const UPDATE_CONTACT_COMMIT = 'UPDATE_CONTACT_COMMIT';
+export const UPDATE_CONTACT_FAIL = 'UPDATE_CONTACT_FAIL';
+
+// Delete
+export const DELETE_CONTACT = 'DELETE_CONTACT';
+export const DELETE_CONTACT_COMMIT = 'DELETE_CONTACT_COMMIT';
+export const DELETE_CONTACT_FAIL = 'DELETE_CONTACT_FAIL';
+
+
+export function loadContacts() {
   return {
-    type: LOAD_DATA_CONTACTS,
+    type: LOAD_ALL_CONTACTS,
   };
 }
 
-export function loadContactsDataCommit(data) {
+export function loadContactsCommit(data) {
   return {
-    type: LOAD_DATA_CONTACTS_COMMIT,
+    type: LOAD_ALL_CONTACTS_COMMIT,
     data
   };
 }
 
-export function loadContactsDataFail(error) {
+export function loadContactsFail(error) {
   return {
-    type: LOAD_DATA_CONTACTS_FAIL,
+    type: LOAD_ALL_CONTACTS_FAIL,
+    error
+  };
+}
+
+export function loadOneContact(id: string) {
+  return {
+    type: LOAD_ONE_CONTACT,
+    id
+  };
+}
+
+export function loadOneContactCommit(data) {
+  return {
+    type: LOAD_ONE_CONTACT_COMMIT,
+    data
+  };
+}
+
+export function loadOneContactFail(error) {
+  return {
+    type: LOAD_ONE_CONTACT_FAIL,
+    error
+  };
+}
+
+export function createContact(data) {
+  return {
+    type: CREATE_CONTACT,
+    data,
+  };
+}
+
+export function createContactCommit(data, index?: number) {
+  return {
+    type: CREATE_CONTACT_COMMIT,
+    data,
+    index
+  };
+}
+
+export function createContactFail(error) {
+  return {
+    type: CREATE_CONTACT_FAIL,
+    error
+  };
+}
+
+export function updateContact(data) {
+  return {
+    type: UPDATE_CONTACT,
+    data
+  };
+}
+
+export function updateContactCommit(data, nested) {
+  return {
+    type: UPDATE_CONTACT_COMMIT,
+    data,
+    nested
+  };
+}
+
+export function updateContactFail(error) {
+  return {
+    type: UPDATE_CONTACT_FAIL,
+    error
+  };
+}
+
+export function deleteContact(id) {
+  return {
+    type: DELETE_CONTACT,
+    id
+  };
+}
+
+export function deleteContactCommit(data, nested) {
+  return {
+    type: DELETE_CONTACT_COMMIT,
+    data,
+    nested
+  };
+}
+
+export function deleteContactFail(error) {
+  return {
+    type: DELETE_CONTACT_FAIL,
     error
   };
 }
