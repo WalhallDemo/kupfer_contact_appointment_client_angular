@@ -13,6 +13,9 @@ export const getAllContacts = reselect.createSelector(
         ${contact.middle_name ? contact.middle_name : ''}
         ${contact.last_name ? contact.last_name : ''}
          `;
+        contact.email = contact.emails ? contact.emails[0].email : '';
+        contact.address = contact.addresses ? contact.addresses[0].address : '';
+        contact.phone = contact.phones ? contact.phones[0].number : '';
         return contact;
       });
       return contacts;
