@@ -8,7 +8,7 @@ export const getAllContacts = reselect.createSelector(
     if (contacts) {
       contacts.data.map(contact => {
         contact.email = contact.emails && contact.emails[0] ? contact.emails[0].email : '';
-        contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].address : '';
+        contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].street : '';
         contact.phone = contact.phones ? contact.phones[0].number : '';
         const random = (Math.random() * 10); // TODO: to get a random picture just for demo and should be removed
         if (random > 5 && random < 8 && contact.first_name !== 'Name') {

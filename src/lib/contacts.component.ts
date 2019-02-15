@@ -166,29 +166,27 @@ export class ContactsComponent implements OnInit {
 
   /**
    * function that is triggered when the card item is edited
-   * @param {string} editedData - an object that contains the edited object and the current card item data
+   * @param {string} editedField - an object that contains the edited property and the edited value of the field object and the current card item data
    */
-  handleCardItemEdited(editedData: {editedObj: any, item: any}) {
-    let editedProperty;
-    if (editedData.editedObj.index !== undefined) {
-      editedProperty = this.cardItemOptions[editedData.editedObj.element][editedData.editedObj.index].prop;
-    } else {
-      editedProperty = this.cardItemOptions[editedData.editedObj.element].prop;
-    }
+  handleCardItemEdited(editedField: {value: any, property, itemData: any}) {
+    const {value, property, itemData} = editedField;
     const newItem: any = {};
-    newItem.id = editedData.item.id;
-    newItem.first_name = editedData.item.first_name;
-    newItem.last_name = editedData.item.last_name;
-    newItem.workflowlevel1_uuids = editedData.item.workflowlevel1_uuids;
-    editedData.item.addresses.length > 0 ? newItem.addresses = editedData.item.addresses : newItem.addresses = [{type: 'home', address: 'asdas 12'}];
-    editedData.item.emails.length > 0 ? newItem.emails = editedData.item.emails : newItem.emails = [{type: 'office', email: 'asdas@aaa.com'}];
-    if (editedData.editedObj.value && editedData.editedObj.value !== '') {
-      if (editedProperty === 'email') {
-        newItem.addresses[0].address = editedData.editedObj.value;
-      } else if (editedProperty === 'address') {
-        newItem.emails[0].email = editedData.editedObj.value;
+    newItem.id = itemData.id;
+    newItem.first_name = itemData.first_name;
+    newItem.last_name = itemData.last_name;
+    newItem.workflowlevel1_uuids = itemData.workflowlevel1_uuids;
+    itemData.addresses && itemData.addresses.length > 0 ? newItem.addresses = itemData.addresses : newItem.addresses = [];
+    itemData.emails && itemData.emails.length > 0 ? newItem.emails = itemData.emails : newItem.emails = [];
+    itemData.phones && itemData.phones.length > 0 ? newItem.phones = itemData.phones : newItem.phones = [];
+    if (value && value !== '') {
+      if (property === 'email') {
+        newItem.emails[0].email = value;
+      } else if (property === 'address') {
+        newItem.addresses[0].street = value;
+      } else if (property === 'phone') {
+        newItem.phones[0].number = value;
       } else {
-        newItem[editedProperty] = editedData.editedObj.value;
+        newItem[property] = value;
       }
       this.crud.updateItem(newItem);
     }

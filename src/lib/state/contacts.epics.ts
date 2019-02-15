@@ -81,7 +81,7 @@ const updateContactEpic = action$ => {
     switchMap((action: Action) => {
       const payload = {...action.data};
       delete payload['id']; // remove id from payload because we already send it in the url
-      return httpService.makeRequest('put', `${environment.API_URL}/crm/contact/${action.data.id}/`, payload, true).pipe(
+      return httpService.makeRequest('patch', `${environment.API_URL}/crm/contact/${action.data.id}/`, payload, true).pipe(
         // If successful, dispatch success action with result
         map((res: Action) => updateContactCommit(res.data, action.nested)),
         // If request fails, dispatch failed action
