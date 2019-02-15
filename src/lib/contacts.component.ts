@@ -132,7 +132,8 @@ export class ContactsComponent implements OnInit {
       columns: [
         {name: 'Name', prop: 'first_name', flex: 2, sortable: true, filtering: true},
         {name: 'Email', prop: 'email', flex: 2, sortable: true, filtering: true},
-        {name: 'Number', prop: 'number', flex: 2, sortable: true, filtering: true},
+        {name: 'Phone', prop: 'phone', flex: 2, sortable: true, filtering: true},
+        {name: 'Address', prop: 'address', flex: 2, sortable: true, filtering: true},
         {name: '', cellTemplate: 'actions', actions: ['delete']},
       ]
     };
