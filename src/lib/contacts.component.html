@@ -1,5 +1,5 @@
 <mg-crud-list
-  #crudList
+  #crud
   [loadAction]="'LOAD_ALL_CONTACTS'"
   [title]="'Contacts'"
   [tableOptions]="tableOptions"
@@ -10,7 +10,7 @@
   [createAction]="'CREATE_CONTACT'"
   [deleteMessage]="'The contact has been deleted'"
   [addButtonText]="'Add Contact'"
-  [defaultLayout]="'tile'"
+  [defaultLayout]="'list'"
   [detailsRoute]="'/contacts/details/'"
   (cardItemActionClicked)="handleCardItemActionClicked($event)"
   (cardItemEdited)="handleCardItemEdited($event)"

@@ -11,7 +11,7 @@ import { ListComponent } from '../../../midgard-angular/src/lib/modules/crud/lis
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-  @ViewChild('crudList') crudList: ListComponent;
+  @ViewChild('crud') crud: ListComponent;
 
   public tableOptions;
   public cardItemOptions: CardItemOptions;
@@ -48,12 +48,12 @@ export class ContactsComponent implements OnInit {
   private defineCardItemOptions() {
     this.cardItemOptions = {
       title: {
-        prop: 'fullName',
+        prop: 'first_name',
         label: 'Contact Name'
       },
       picture: {
-        thumbnail: 'picture',
-        image: 'Picture'
+        thumbnail: 'image',
+        image: 'image'
       },
       subText: {
         prop: 'description',
@@ -130,7 +130,9 @@ export class ContactsComponent implements OnInit {
   private defineTableOptions() {
     this.tableOptions = {
       columns: [
-        {name: 'Name', prop: 'fullName', flex: 2, sortable: true, filtering: true},
+        {name: 'Name', prop: 'first_name', flex: 2, sortable: true, filtering: true},
+        {name: 'Email', prop: 'email', flex: 2, sortable: true, filtering: true},
+        {name: 'Number', prop: 'number', flex: 2, sortable: true, filtering: true},
         {name: '', cellTemplate: 'actions', actions: ['delete']},
       ]
     };
@@ -141,17 +143,22 @@ export class ContactsComponent implements OnInit {
    * @param {string} actionData - an object that contains the type of the action that has been triggered and the selected item
    */
   handleCardItemActionClicked(actionData: {actionType: string, item: any}) {
+    let itemIndex
     switch (actionData.actionType) {
       case 'new':
-        const itemIndex = this.crudList.rows.indexOf(actionData.item) + 1;
+        if (actionData.item) {
+          itemIndex = this.crud.rows.indexOf(actionData.item) + 1;
+        } else {
+          itemIndex = 1;
+        }
         // generate a placeholder item
-        const contact = {};
-        contact.first_name =  'First Name';
-        contact.last_name = 'Last Name';
+        const contact: any = {};
+        contact.first_name = 'Name';
+        contact.last_name = 'lastname';
         contact.workflowlevel1_uuids = [];
-        return this.crudList.createItem(contact, itemIndex);
+        return this.crud.createItem(contact, itemIndex);
       case 'delete':
-        return this.crudList.deleteItem(item);
+        return this.crud.deleteItem(actionData.item);
       default:
         return false;
     }
@@ -161,24 +168,30 @@ export class ContactsComponent implements OnInit {
    * function that is triggered when the card item is edited
    * @param {string} editedData - an object that contains the edited object and the current card item data
    */
-  handleCardItemEdited(editedData: {editedObj: string, item: any}) {
+  handleCardItemEdited(editedData: {editedObj: any, item: any}) {
     let editedProperty;
-    console.log(editedData);
-    // if (editedObj.index !== undefined) {
-    //   editedProperty = this.cardItemOptions[editedObj.element][editedObj.index].prop;
-    // } else {
-    //   editedProperty = this.cardItemOptions[editedObj.element].prop;
-    // }
-    // const newItem: any = {};
-    // newItem.id = item.id;
-    // newItem.name = item.name;
-    // if (editedObj.value && editedObj.value !== '') {
-    //   newItem[editedProperty] = editedObj.value;
-    //   this.store.dispatch({
-    //     type: this.updateAction,
-    //     data: newItem
-    //   });
-    // }
+    if (editedData.editedObj.index !== undefined) {
+      editedProperty = this.cardItemOptions[editedData.editedObj.element][editedData.editedObj.index].prop;
+    } else {
+      editedProperty = this.cardItemOptions[editedData.editedObj.element].prop;
+    }
+    const newItem: any = {};
+    newItem.id = editedData.item.id;
+    newItem.first_name = editedData.item.first_name;
+    newItem.last_name = editedData.item.last_name;
+    newItem.workflowlevel1_uuids = editedData.item.workflowlevel1_uuids;
+    editedData.item.addresses.length > 0 ? newItem.addresses = editedData.item.addresses : newItem.addresses = [{type: 'home', address: 'asdas 12'}];
+    editedData.item.emails.length > 0 ? newItem.emails = editedData.item.emails : newItem.emails = [{type: 'office', email: 'asdas@aaa.com'}];
+    if (editedData.editedObj.value && editedData.editedObj.value !== '') {
+      if (editedProperty === 'email') {
+        newItem.addresses[0].address = editedData.editedObj.value;
+      } else if (editedProperty === 'address') {
+        newItem.emails[0].email = editedData.editedObj.value;
+      } else {
+        newItem[editedProperty] = editedData.editedObj.value;
+      }
+      this.crud.updateItem(newItem);
+    }
   }
 }
 

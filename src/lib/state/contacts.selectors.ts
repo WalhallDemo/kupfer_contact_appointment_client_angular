@@ -7,15 +7,15 @@ export const getAllContacts = reselect.createSelector(
   (contacts) => {
     if (contacts) {
       contacts.data.map(contact => {
-        contact.fullName = `
-        ${contact.title ? contact.title : ''}
-        ${contact.first_name ? contact.first_name : ''}
-        ${contact.middle_name ? contact.middle_name : ''}
-        ${contact.last_name ? contact.last_name : ''}
-         `;
-        contact.email = contact.emails ? contact.emails[0].email : '';
-        contact.address = contact.addresses ? contact.addresses[0].address : '';
+        contact.email = contact.emails && contact.emails[0] ? contact.emails[0].email : '';
+        contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].address : '';
         contact.phone = contact.phones ? contact.phones[0].number : '';
+        const random = (Math.random() * 10); // TODO: to get a random picture just for demo and should be removed
+        if (random > 5 && random < 8 && contact.first_name !== 'Name') {
+          contact.image = '/assets/img/contact-example2.jpeg';
+        } else if (random < 5 && random > 2 && contact.first_name !== 'Name') {
+          contact.image = '/assets/img/contact-example.jpeg';
+        }
         return contact;
       });
       return contacts;

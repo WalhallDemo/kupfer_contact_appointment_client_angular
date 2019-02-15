@@ -43,7 +43,7 @@ const loadOneContactEpic = action$ => {
   return action$.pipe(
     reduxObservable.ofType(LOAD_ONE_CONTACT),
     switchMap((action: Action) => {
-      return httpService.makeRequest('get', `${environment.API_URL}/crm/contact/${action.id}/`, true).pipe(
+      return httpService.makeRequest('get', `${environment.API_URL}/crm/contact/${action.id}/`, {}, true).pipe(
         // If successful, dispatch success action with result
         map((res: Action) => loadOneContactCommit(res.data)),
         // If request fails, dispatch failed action

@@ -24,12 +24,10 @@ export class ContactDetailComponent implements OnInit {
    */
   defineFormFields() {
     this.formFields = [
-      {label: 'Name', controlName: 'name', type: 'text', validators: ['required'] },
-      {label: 'Manufacturer', controlName: 'make', type: 'text'},
-      {label: 'Model', controlName: 'model', type: 'text' },
-      {label: 'Style', controlName: 'style', type: 'text'},
-      {label: 'Description', controlName: 'description', type: 'text' },
-      {label: 'Ref.', controlName: 'reference_id', type: 'text' },
+      {label: 'Name', controlName: 'first_name', type: 'text', validators: ['required'] },
+      {label: 'Email', controlName: 'email', type: 'text'},
+      {label: 'Phone', controlName: 'phone', type: 'text'},
+      {label: 'Address', controlName: 'address', type: 'text'},
     ];
   }
 
