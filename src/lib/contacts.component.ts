@@ -67,6 +67,14 @@ export class ContactsComponent implements OnInit {
         prop: 'address',
         label: 'Address'
       },
+      date1: {
+        prop: 'create_date',
+        label: 'Created at'
+      },
+      date2: {
+        prop: 'edit_date',
+        label: 'Updated at'
+      },
       belowMenuPrimaryAction: {
         label: 'New Contact',
         value: 'new'
