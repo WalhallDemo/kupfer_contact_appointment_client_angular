@@ -144,7 +144,7 @@ export class ContactsComponent implements OnInit {
    * @param {string} actionData - an object that contains the type of the action that has been triggered and the selected item
    */
   handleCardItemActionClicked(actionData: {actionType: string, item: any}) {
-    let itemIndex
+    let itemIndex;
     switch (actionData.actionType) {
       case 'new':
         if (actionData.item) {
@@ -180,14 +180,18 @@ export class ContactsComponent implements OnInit {
     itemData.emails && itemData.emails.length > 0 ? newItem.emails = itemData.emails : newItem.emails = [];
     itemData.phones && itemData.phones.length > 0 ? newItem.phones = itemData.phones : newItem.phones = [];
     if (value && value !== '') {
-      if (property === 'email') {
-        newItem.emails[0].email = value;
-      } else if (property === 'address') {
-        newItem.addresses[0].street = value;
-      } else if (property === 'phone') {
-        newItem.phones[0].number = value;
-      } else {
-        newItem[property] = value;
+      switch (property) {
+        case 'email':
+          newItem.emails[0].email = value;
+          break;
+        case 'address':
+          newItem.addresses[0].street = value;
+          break;
+        case 'phone':
+           newItem.phones[0].number = value;
+          break;
+        default:
+          newItem[property] = value;
       }
       this.crud.updateItem(newItem);
     }

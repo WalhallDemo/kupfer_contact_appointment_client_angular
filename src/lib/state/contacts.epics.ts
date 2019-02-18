@@ -99,7 +99,7 @@ const deleteContactEpic = action$ => {
   return action$.pipe(
     reduxObservable.ofType(DELETE_CONTACT),
     switchMap((action: Action) => {
-      return httpService.makeRequest('delete', `${environment.API_URL}/crm/contact/${action.data.id}/`, true).pipe(
+      return httpService.makeRequest('delete', `${environment.API_URL}/crm/contact/${action.data.id}/`, {},  true).pipe(
         // If successful, dispatch success action with result
         map(res => deleteContactCommit(action.data, action.nested)),
         // If request fails, dispatch failed action
