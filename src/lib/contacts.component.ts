@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { getAllContacts } from '@libs/contacts/src/lib/state/contacts.selectors';
 import { Store } from '@libs/midgard-angular/src/lib/modules/store/store';
 import { setTopBarOptions } from '@libs/midgard-angular/src/lib/state/top-bar/top-bar.actions';
-import { CardItemOptions } from '../../../midgard-angular/src/lib/components/card-item/card-item-options';
-import { CrudComponent } from '../../../midgard-angular/src/lib/modules/crud/crud.component';
+import { CardItemOptions } from '@libs/midgard-angular/src/lib/components/card-item/card-item-options';
+import { CrudComponent } from '@libs/midgard-angular/src/lib/modules/crud/crud.component';
 
 @Component({
   selector: 'lib-contacts',
@@ -167,7 +167,8 @@ export class ContactsComponent implements OnInit {
 
   /**
    * function that is triggered when the card item is edited
-   * @param {string} editedField - an object that contains the edited property and the edited value of the field object and the current card item data
+   * @param {string} editedField - an object that contains the edited property and
+   * the edited value of the field object and the current card item data
    */
   handleCardItemEdited(editedField: {value: any, property, itemData: any}) {
     const {value, property, itemData} = editedField;
