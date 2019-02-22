@@ -1,4 +1,6 @@
 // Load All
+import {Contact} from './contacts.model';
+
 export const LOAD_ALL_CONTACTS = 'LOAD_ALL_CONTACTS';
 export const LOAD_ALL_CONTACTS_COMMIT = 'LOAD_ALL_CONTACTS_COMMIT';
 export const LOAD_ALL_CONTACTS_FAIL = 'LOAD_ALL_CONTACTS_FAIL';
@@ -30,7 +32,7 @@ export function loadContacts() {
   };
 }
 
-export function loadContactsCommit(data) {
+export function loadContactsCommit(data: Contact[]) {
   return {
     type: LOAD_ALL_CONTACTS_COMMIT,
     data
@@ -51,7 +53,7 @@ export function loadOneContact(id: string) {
   };
 }
 
-export function loadOneContactCommit(data) {
+export function loadOneContactCommit(data: Contact) {
   return {
     type: LOAD_ONE_CONTACT_COMMIT,
     data
@@ -65,14 +67,14 @@ export function loadOneContactFail(error) {
   };
 }
 
-export function createContact(data) {
+export function createContact(data: Contact) {
   return {
     type: CREATE_CONTACT,
     data,
   };
 }
 
-export function createContactCommit(data, index?: number) {
+export function createContactCommit(data: Contact, index?: number) {
   return {
     type: CREATE_CONTACT_COMMIT,
     data,
@@ -94,7 +96,7 @@ export function updateContact(data) {
   };
 }
 
-export function updateContactCommit(data, nested) {
+export function updateContactCommit(data: Contact, nested) {
   return {
     type: UPDATE_CONTACT_COMMIT,
     data,
@@ -109,14 +111,14 @@ export function updateContactFail(error) {
   };
 }
 
-export function deleteContact(id) {
+export function deleteContact(data: Contact) {
   return {
     type: DELETE_CONTACT,
     id
   };
 }
 
-export function deleteContactCommit(data, nested) {
+export function deleteContactCommit(data: Contact, nested) {
   return {
     type: DELETE_CONTACT_COMMIT,
     data,
