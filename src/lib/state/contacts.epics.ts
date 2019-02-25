@@ -92,7 +92,7 @@ const updateContactEpic = action$ => {
 };
 
 /**
- * this is here to handle asynchronous actions and will be triggered when DELETE_PRODUCT action is dispatched
+ * this is here to handle asynchronous actions and will be triggered when DELETE_CLIENT action is dispatched
  * @param {Observable} action$ - the current action
  */
 const deleteContactEpic = action$ => {
