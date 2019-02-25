@@ -114,7 +114,7 @@ export function updateContactFail(error) {
 export function deleteContact(data: Contact) {
   return {
     type: DELETE_CONTACT,
-    id
+    data
   };
 }
 

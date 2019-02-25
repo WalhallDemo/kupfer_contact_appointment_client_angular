@@ -30,9 +30,13 @@ export interface Contact {
   middle_name?: string;
   last_name?: string;
   addresses?: Address[];
+  address: string;
+  image: string;
+  email: string;
   emails?: Email[];
   faxes?: number;
   phones?: Telephone[];
+  phone: string;
   notes?: string;
   user?: string;
   uuid?: string;
@@ -40,7 +44,5 @@ export interface Contact {
   organization_uuid?: string;
   workflowlevel1_uuids?: string[];
   workflowlevel2_uuids?: string[];
-  appointments?: Appointment[];
   siteprofile_uuids?: string[];
-  siteProfile: SiteProfile; // for the first site profile for now
 }

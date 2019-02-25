@@ -3,9 +3,10 @@ import {
   CREATE_CONTACT_COMMIT, DELETE_CONTACT_COMMIT, LOAD_ALL_CONTACTS_COMMIT, LOAD_ONE_CONTACT_COMMIT,
   UPDATE_CONTACT_COMMIT
 } from './contacts.actions';
+import {Contact} from './contacts.model';
 
 export interface ContactState {
-  data: ContactUser[];
+  data: Contact[];
   loaded: false;
   created: false;
   updated: false;
