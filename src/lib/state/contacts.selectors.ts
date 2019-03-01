@@ -11,12 +11,6 @@ export const getAllContacts = reselect.createSelector(
         contact.email = contact.emails && contact.emails[0] ? contact.emails[0].email : '';
         contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].street : '';
         contact.phone = contact.phones && contact.phones[0] ? contact.phones[0].number : '';
-        const random = (Math.random() * 10); // TODO: to get a random picture just for demo and should be removed
-        if (random > 5 && random < 8 && contact.first_name !== 'Name') {
-          contact.image = '/assets/img/contact-example2.jpeg';
-        } else if (random < 5 && random > 2 && contact.first_name !== 'Name') {
-          contact.image = '/assets/img/contact-example.jpeg';
-        }
         return contact;
       });
       return contactState;
