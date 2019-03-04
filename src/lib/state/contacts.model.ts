@@ -1,4 +1,4 @@
-import {WorkflowLevel2} from '../../../../midgard-angular/src/lib/state/workflow-level2/workflow-level2.model';
+import {WorkflowLevel2} from '@src/midgard/state/workflow-level2/workflow-level2.model';
 
 interface Telephone {
   type: string;

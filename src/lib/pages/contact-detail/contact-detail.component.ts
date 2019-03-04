@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { getAllContacts } from '@libs/contacts/src/lib/state/contacts.selectors';
+import { getAllContacts } from '@clients/contacts/src/lib/state/contacts.selectors';
 
 @Component({
   selector: 'lib-contact-detail',

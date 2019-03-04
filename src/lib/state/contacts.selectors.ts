@@ -1,4 +1,4 @@
-import { reselect } from '@libs/midgard-angular/src/lib/modules/store';
+import { reselect } from '@src/midgard/modules/store';
 import {ContactState} from './contacts.reducer';
 
 const getContacts = state => state.contactsReducer;

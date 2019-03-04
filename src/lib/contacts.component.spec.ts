@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactsComponent } from './contacts.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import {MidgardStoreModule} from '@libs/midgard-angular/src/lib/modules/store/store.module';
+import {MidgardStoreModule} from '@src/midgard/modules/store/store.module';
 
 describe('ContactsComponent', () => {
   let component: ContactsComponent;

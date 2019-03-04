@@ -1,4 +1,4 @@
-import { addAll, deleteOne, upsertOne } from '@libs/midgard-angular/src/lib/modules/store/reducer.utils';
+import { addAll, deleteOne, upsertOne } from '@src/midgard/modules/store/reducer.utils';
 import {
   CREATE_CONTACT_COMMIT, DELETE_CONTACT_COMMIT, LOAD_ALL_CONTACTS_COMMIT, LOAD_ONE_CONTACT_COMMIT,
   UPDATE_CONTACT_COMMIT

@@ -1,4 +1,4 @@
-import { HttpService } from '@libs/midgard-angular/src/lib/modules/http/http.service';
+import { HttpService } from '@src/midgard/modules/http/http.service';
 import { ofType } from 'redux-observable';
 import { switchMap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -6,10 +6,10 @@ import {
   createContactCommit, createContactFail, deleteContactCommit, deleteContactFail,
   loadOneContactFail, loadContactsCommit,
   updateContactCommit, updateContactFail, loadContactsFail
-} from '@libs/contacts/src/lib/state/contacts.actions';
+} from '@clients/contacts/src/lib/state/contacts.actions';
 import { environment } from '@env/environment';
-import { reduxObservable } from '@libs/midgard-angular/src/lib/modules/store';
-import { Action } from '@libs/midgard-angular/src/lib/state/action.type';
+import { reduxObservable } from '@src/midgard/modules/store';
+import { Action } from '@src/midgard/state/action.type';
 import {
   CREATE_CONTACT, DELETE_CONTACT, LOAD_ALL_CONTACTS, LOAD_ONE_CONTACT, loadOneContactCommit,
   UPDATE_CONTACT

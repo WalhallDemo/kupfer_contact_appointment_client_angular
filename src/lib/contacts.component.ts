@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { getAllContacts } from '@libs/contacts/src/lib/state/contacts.selectors';
-import { Store } from '@libs/midgard-angular/src/lib/modules/store/store';
-import { setTopBarOptions } from '@libs/midgard-angular/src/lib/state/top-bar/top-bar.actions';
-import { CardItemOptions } from '@libs/midgard-angular/src/lib/components/card-item/card-item-options';
-import { CrudComponent } from '@libs/midgard-angular/src/lib/modules/crud/crud.component';
+import { getAllContacts } from '@clients/contacts/src/lib/state/contacts.selectors';
+import { Store } from '@src/midgard/modules/store/store';
+import { setTopBarOptions } from '@src/midgard/state/top-bar/top-bar.actions';
+import { CardItemOptions } from '@src/midgard/components/card-item/card-item-options';
+import { CrudComponent } from '@src/midgard/modules/crud/crud.component';
 
 @Component({
   selector: 'lib-contacts',
