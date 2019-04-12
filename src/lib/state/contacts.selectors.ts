@@ -7,13 +7,12 @@ export const getAllContacts = reselect.createSelector(
   getContacts,
   (contactState: ContactState) => {
     if (contactState) {
-      contactState.data.map(contact => {
+      return contactState.data.results.map(contact => {
         contact.email = contact.emails && contact.emails[0] ? contact.emails[0].email : '';
         contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].street : '';
         contact.phone = contact.phones && contact.phones[0] ? contact.phones[0].number : '';
         return contact;
       });
-      return contactState;
     }
   }
 );
