@@ -19,6 +19,18 @@ export const getAllContacts = reselect.createSelector(
 );
 
 /**
+ * selector to check if the data is loaded
+ */
+export const getContactsLoaded = reselect.createSelector(
+  getContacts,
+  (contactsState: ContactState) => {
+    if (contactsState) {
+      return contactsState.loaded;
+    }
+  }
+);
+
+/**
  * selector that selects one contact from the contacts reducer
  * @param {number} id - id of the document
  * @returns {MemoizedSelector<any, any>}

@@ -4,6 +4,7 @@ import { Store } from '@src/midgard/modules/store/store';
 import { setTopBarOptions } from '@src/midgard/state/top-bar/top-bar.actions';
 import { CardItemOptions } from '@src/midgard/components/card-item/card-item-options';
 import { CrudComponent } from '@src/midgard/modules/crud/crud.component';
+import { getContactsLoaded } from './state/contacts.selectors';
 
 @Component({
   selector: 'lib-contacts',
@@ -30,7 +31,8 @@ export class ContactsComponent implements OnInit {
     }
   ];
   public graphQlQuery;
-  public selector = getAllContacts;
+  public dataSelector = getAllContacts;
+  public loadedSelector = getContactsLoaded;
 
 
   constructor(private store: Store<any>) {

@@ -25,13 +25,13 @@ export function contactsReducer(state = initialState, action) {
     case LOAD_ALL_CONTACTS_COMMIT:
       return addAll(state, action);
     case LOAD_ONE_CONTACT_COMMIT:
-      return upsertOne(state, action);
+      return upsertOne(state, action, 'uuid', 'results');
     case CREATE_CONTACT_COMMIT:
-      return upsertOne(state, action);
+      return upsertOne(state, action, 'uuid', 'results');
     case UPDATE_CONTACT_COMMIT:
-      return upsertOne(state, action);
+      return upsertOne(state, action, 'uuid', 'results');
     case DELETE_CONTACT_COMMIT:
-      return deleteOne(state, action);
+      return deleteOne(state, action, 'uuid', 'results');
     default:
       return state;
   }
