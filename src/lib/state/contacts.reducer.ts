@@ -6,7 +6,7 @@ import {
 import {Contact} from './contacts.model';
 
 export interface ContactState {
-  data: Contact[];
+  data: {results: Contact[]};
   loaded: false;
   created: false;
   updated: false;
