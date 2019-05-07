@@ -10,7 +10,6 @@ describe('ContactsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MidgardStoreModule.forRoot()],
       declarations: [ ContactsComponent ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -21,9 +20,5 @@ describe('ContactsComponent', () => {
     fixture = TestBed.createComponent(ContactsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
