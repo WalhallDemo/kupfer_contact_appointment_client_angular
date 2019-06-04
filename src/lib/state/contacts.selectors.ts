@@ -6,7 +6,7 @@ const getContacts = state => state.contactsReducer;
 export const getAllContacts = reselect.createSelector(
   getContacts,
   (contactState: ContactState) => {
-    if (contactState) {
+    if (contactState && contactState.data.results) {
       return contactState.data.results.map(contact => {
         contact.email = contact.emails && contact.emails[0] ? contact.emails[0].email : '';
         contact.address = contact.addresses && contact.addresses[0] ? contact.addresses[0].street : '';
