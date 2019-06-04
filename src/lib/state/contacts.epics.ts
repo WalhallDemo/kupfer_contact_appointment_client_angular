@@ -27,7 +27,7 @@ export class ContactsEpics {
     return action$.pipe(
       ofType(LOAD_ALL_CONTACTS),
       switchMap((action: any) => {
-        return this.httpService.makeRequest('get', `${environment.API_URL}/crm/contact`, {}, true).pipe(
+        return this.httpService.makeRequest('get', `${environment.API_URL}crm/contact`, {}, true).pipe(
           // If successful, dispatch success action with result
           map(res => loadContactsCommit(res.data)),
           // If request fails, dispatch failed action
@@ -45,7 +45,7 @@ export class ContactsEpics {
     return action$.pipe(
       reduxObservable.ofType(LOAD_ONE_CONTACT),
       switchMap((action: Action) => {
-        return this.httpService.makeRequest('get', `${environment.API_URL}/crm/contact/${action.id}/`, {}, true).pipe(
+        return this.httpService.makeRequest('get', `${environment.API_URL}crm/contact/${action.id}/`, {}, true).pipe(
           // If successful, dispatch success action with result
           map((res: Action) => loadOneContactCommit(res.data)),
           // If request fails, dispatch failed action
@@ -83,7 +83,7 @@ export class ContactsEpics {
       switchMap((action: Action) => {
         const payload = {...action.data};
         delete payload['id']; // remove id from payload because we already send it in the url
-        return this.httpService.makeRequest('patch', `${environment.API_URL}/crm/contact/${action.data.id}/`, payload, true).pipe(
+        return this.httpService.makeRequest('patch', `${environment.API_URL}crm/contact/${action.data.id}/`, payload, true).pipe(
           // If successful, dispatch success action with result
           map((res: Action) => updateContactCommit(res.data, action.nested)),
           // If request fails, dispatch failed action
@@ -101,7 +101,7 @@ export class ContactsEpics {
     return action$.pipe(
       reduxObservable.ofType(DELETE_CONTACT),
       switchMap((action: Action) => {
-        return this.httpService.makeRequest('delete', `${environment.API_URL}/crm/contact/${action.data.id}/`, {},  true).pipe(
+        return this.httpService.makeRequest('delete', `${environment.API_URL}crm/contact/${action.data.id}/`, {},  true).pipe(
           // If successful, dispatch success action with result
           map(res => deleteContactCommit(action.data, action.nested)),
           // If request fails, dispatch failed action

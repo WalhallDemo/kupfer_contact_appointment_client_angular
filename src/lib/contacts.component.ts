@@ -145,7 +145,7 @@ export class ContactsComponent implements OnInit {
    * function that listens if an action from the card-item component has been triggered
    * @param {string} actionData - an object that contains the type of the action that has been triggered and the selected item
    */
-  handleCardItemActionClicked(actionData: {actionType: string, item: any}) {
+  handleItemActionClicked(actionData: {actionType: string, item: any}) {
     let itemIndex;
     switch (actionData.actionType) {
       case 'new':
@@ -172,7 +172,7 @@ export class ContactsComponent implements OnInit {
    * @param {string} editedField - an object that contains the edited property and
    * the edited value of the field object and the current card item data
    */
-  handleCardItemEdited(editedField: {value: any, property, itemData: any}) {
+  handleItemEdited(editedField: {value: any, property, itemData: any}) {
     const {value, property, itemData} = editedField;
     const newItem: any = {};
     newItem.id = itemData.id;
