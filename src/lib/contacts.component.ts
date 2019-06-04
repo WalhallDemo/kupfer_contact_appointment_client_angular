@@ -81,10 +81,6 @@ export class ContactsComponent implements OnInit {
         {
           label: 'Delete',
           value: 'delete'
-        },
-        {
-          label: 'Pin to Dashboard',
-          value: 'pin'
         }
       ],
       belowMenuOtherActions: [
