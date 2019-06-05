@@ -50,7 +50,7 @@ export class ContactsComponent implements OnInit {
   private defineCardItemOptions() {
     this.cardItemOptions = {
       title: {
-        prop: 'first_name',
+        prop: 'name',
         label: 'Contact Name'
       },
       picture: {
@@ -58,8 +58,8 @@ export class ContactsComponent implements OnInit {
         image: 'image'
       },
       subText: {
-        prop: 'description',
-        label: 'Contact Description'
+        prop: 'company',
+        label: 'Company'
       },
       caption: {
         prop: 'email',
@@ -128,11 +128,12 @@ export class ContactsComponent implements OnInit {
   private defineTableOptions() {
     this.tableOptions = {
       columns: [
-        {name: 'Name', prop: 'first_name', flex: 2, sortable: true, filtering: true},
-        {name: 'Email', prop: 'email', flex: 2, sortable: true, filtering: true},
-        {name: 'Phone', prop: 'phone', flex: 2, sortable: true, filtering: true},
-        {name: 'Address', prop: 'address', flex: 2, sortable: true, filtering: true},
-        {name: '', cellTemplate: 'actions', actions: ['delete']},
+        {name: 'Name', prop: 'name', cellTemplate: 'picture-edit', flex: 2, sortable: true, filtering: true},
+        {name: 'Company', prop: 'company', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
+        {name: 'Email', prop: 'email', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
+        {name: 'Phone', prop: 'phone', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
+        {name: 'Address', prop: 'address', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
+        {name: '', cellTemplate: 'actions', actions: this.cardItemOptions.otherActions},
       ]
     };
   }
@@ -152,8 +153,12 @@ export class ContactsComponent implements OnInit {
         }
         // generate a placeholder item
         const contact: any = {};
-        contact.first_name = 'Name';
-        contact.last_name = 'lastname';
+        contact.first_name = 'First Name';
+        contact.last_name = 'Last Name';
+        contact.addresses = [{street: 'Address'}];
+        contact.emails = [{email: 'email@email.com'}];
+        contact.phones = [{number: 'Phone'}];
+        contact.company = 'Company';
         contact.workflowlevel1_uuids = [];
         return this.crud.createItem(contact, itemIndex);
       case 'delete':
@@ -180,6 +185,12 @@ export class ContactsComponent implements OnInit {
     itemData.phones && itemData.phones.length > 0 ? newItem.phones = itemData.phones : newItem.phones = [];
     if (value && value !== '') {
       switch (property) {
+        case 'name':
+          const firstName = value.split(' ')[0];
+          const lastName = value.split(' ')[1];
+          newItem.first_name = firstName;
+          newItem.last_name = lastName;
+          break;
         case 'email':
           newItem.emails[0].email = value;
           break;
