@@ -128,7 +128,7 @@ export class ContactsComponent implements OnInit {
   private defineTableOptions() {
     this.tableOptions = {
       columns: [
-        {name: 'Name', prop: 'name', cellTemplate: 'picture-edit', flex: 2, sortable: true, filtering: true},
+        {name: 'Name', prop: 'name', cellTemplate: 'picture-edit', flex: 3, sortable: true, filtering: true},
         {name: 'Company', prop: 'company', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
         {name: 'Email', prop: 'email', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
         {name: 'Phone', prop: 'phone', cellTemplate: 'edit', flex: 2, sortable: true, filtering: true},
